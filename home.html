@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HackConnect - Home</title>
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* Logo styling */
+.logo {
+    display: block;
+    margin: 30px auto;
+    width: 350px;   /* big and prominent */
+    height: auto;   /* maintain aspect ratio */
+    border-radius: 12px; /* optional rounded corners */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* subtle shadow */
+    animation: float 4s ease-in-out infinite; /* floating animation */
+}
+
+/* Floating animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); } /* move up slightly */
+    100% { transform: translateY(0px); }
+}
+
+
+
+
+
+/* Navbar below welcome message */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #4b7bec;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #3867d6;
+
+}
+
+/* Welcome message card */
+.welcome-message {
+    background-color: #eef2fb;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    line-height: 1.7;
+    font-size: 16px;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+/* Logout button at bottom */
+.logout-btn {
+    background-color: #4b7bec;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    display: block;
+    margin: 25px auto 50px;
+}
+
+.logout-btn:hover {
+    background-color: #3867d6;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <img src="logo.jpg" alt="hackconnect" class="logo">
+    <h1>Welcome to <span>HackConnect</span></h1>
+    <h2>Hello, <span id="user"></span>!</h2>
+
+    <!-- Navigation below welcome -->
+
+    <!-- Welcome paragraph -->
+    <section class="welcome-message">
+        <p>
+            Welcome to <strong>HackConnect</strong>, your ultimate platform to collaborate, innovate, and bring ideas to life! 
+            Here, students and professionals come together to find like-minded teammates, share skills, and post exciting project requirements. 
+            Whether you’re looking to organize an event, find someone with a specific expertise, or simply explore opportunities to work with talented individuals, 
+            HackConnect makes it easy. Build connections, showcase your skills, and be part of a community that thrives on creativity, collaboration, and learning. 
+            Start your journey today and turn your ideas into reality!
+        </p>
+    </section>
+
+    <div class="navbar">
+        <a href="post_requirement.html">Post Requirement</a>
+        <a href="find_teammate.html">Find Teammate</a>
+    </div>
+
+    <!-- Logout button at bottom -->
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<script>
+// Display username
+const username = localStorage.getItem('username');
+if(!username) window.location.href = 'login.html';
+document.getElementById('user').innerText = username;
+
+// Logout function
+function logout() {
+    localStorage.removeItem('username');
+    window.location.href = 'login.html';
+}
+</script>
+</body>
+</html>

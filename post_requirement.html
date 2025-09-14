@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HackConnect - Post Requirement</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+
+  h2 {
+    text-align: center;
+    color: #2c3e50;
+  }
+
+  .section-title {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #34495e;
+    font-size: 16px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background: #2980b9;
+  }
+
+  nav {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Post Your Requirement</h2>
+
+    <div class="section-title">Project / Requirement Info</div>
+    <input type="text" id="department" placeholder="Department">
+    <input type="text" id="domain" placeholder="Domain (e.g., AI, IoT, Blockchain)">
+    <input type="text" id="specialization" placeholder="Specialization (e.g., Web Dev, ML)">
+    <input type="text" id="skills" placeholder="Required Skill Set">
+    <input type="text" id="event" placeholder="Event Name">
+    <input type="text" id="venue" placeholder="Venue">
+
+    <div class="section-title">Contact Info</div>
+    <input type="text" id="phone" placeholder="Phone Number (+91)">
+    <input type="email" id="mail" placeholder="Email ID">
+
+    <button onclick="postRequirement()">Post Requirement</button>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="find_teammate.html">Find Teammate</a>
+    </nav>
+</div>
+
+<script>
+function postRequirement() {
+    const department = document.getElementById('department').value;
+    const domain = document.getElementById('domain').value;
+    const specialization = document.getElementById('specialization').value;
+    const skills = document.getElementById('skills').value;
+    const event = document.getElementById('event').value;
+    const venue = document.getElementById('venue').value;
+    const phone = document.getElementById('phone').value;
+    const mail = document.getElementById('mail').value;
+
+    if(department && domain && specialization && skills && event && venue && phone && mail){
+        let posts = JSON.parse(localStorage.getItem('posts') || '[]');
+        posts.push({ department, domain, specialization, skills, event, venue, phone, mail });
+        localStorage.setItem('posts', JSON.stringify(posts));
+        alert('Requirement Posted Successfully!');
+
+        // Clear inputs
+        document.getElementById('department').value = '';
+        document.getElementById('domain').value = '';
+        document.getElementById('specialization').value = '';
+        document.getElementById('skills').value = '';
+        document.getElementById('event').value = '';
+        document.getElementById('venue').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('mail').value = '';
+    } else {
+        alert('Please fill all fields!');
+    }
+}
+</script>
+</body>
+</html>
+
+
+
+
